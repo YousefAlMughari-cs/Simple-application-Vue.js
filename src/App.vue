@@ -16,6 +16,7 @@
     </ul>
     <div class="footer">
       <button @click="markAll">تحديد الكل</button>
+      <button @click="removeAll">حذف الكل</button>
     </div>
   </div>
 </template>
@@ -45,13 +46,18 @@ import {ref} from 'vue'
       function markAll() {
         todos.value.forEach((todo) => todo.completed = true)
       }
+      function removeAll() {
+        todos.value.splice(0, todos.value.length);
+      }
+
       return {
         todos,
         newTodo,
         create,
         remove,
         completed,
-        markAll
+        markAll,
+        removeAll
       }
     }
   }
@@ -68,6 +74,9 @@ body {
   height: 100vh;
   padding: 10px;
   background: #a9a9a9;
+}
+h1 {
+  text-align: center;
 }
 .wrapper {
   background: #fff;
